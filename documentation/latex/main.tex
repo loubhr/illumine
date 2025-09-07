@@ -1,0 +1,86 @@
+\documentclass[11pt,a4paper,onecolumn]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx} % Times New Roman font
+\usepackage{geometry}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage[french]{babel}
+\usepackage{hyperref}
+\usepackage{multicol}
+
+% Page geometry
+\geometry{
+    left=2.5cm,
+    right=2.5cm,
+    top=3cm,
+    bottom=3cm,
+    headheight=14pt
+}
+
+% Header and footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Title formatting
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+% Document information
+%\title{Document Principal}
+%\author{Votre Nom}
+%\date{\today}
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Document Principal},
+    pdfpagemode=FullScreen,
+}
+
+\begin{document}
+
+% Title page
+%\maketitle
+%\thispagestyle{empty}
+
+\newpage
+
+% Table des matières
+\renewcommand{\contentsname}{Table des matières}
+\tableofcontents
+\newpage
+
+% Main content
+\section{Introduction}
+Durant la première séance, nous allons découvrir comment il est possible d’allumer et d’éteindre une LED en réalisant 
+un petit montage électronique et en écrivant un script python simple. Cette séance est nécessaire pour comprendre 
+quelques bases pour la suite ! \par
+Dans la deuxième séance, nous commencerons enfin à utiliser le ruban LED et à le contrôler avec des scripts python toujours
+assez simples.
+Enfin, dans la dernière séance, nous continuerons notre exploration sur le ruban LED, chacun à son rythme,
+on pourra apprendre à créer des effets lumineux plus complexes, et même essayer de les activer via une application téléphone !
+
+
+% Import sub-parts
+\input{part1}
+\newpage
+\input{part2}
+\input{part3}
+\newpage
+\input{annexe}
+
+%\section{Conclusion}
+
+\end{document}

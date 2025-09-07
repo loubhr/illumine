@@ -1,0 +1,241 @@
+\section{\textit{Deuxième Séance}}
+
+\subsection{Montage électronique}
+On va connecter le ruban LED au raspberry Pi, en utilisant une carte de prototypage, en suivant le schéma ci-dessous:
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/LED_tape_circuit.png}
+    \caption{Schéma de connexion du ruban LED au Raspberry Pi}
+    \label{fig:schema_led_tape_rpi}
+\end{figure}
+
+\subsection{Programmation Python}
+
+\subsubsection{Démarrage}
+
+Une fois le montage électronique réalisé, on peut brancher le clavier, la souris, et le câble micro-hdmi au Raspberry Pi.
+Puis, on peut brancher le câble d'alimentation pour allumer le Raspberry Pi 5.
+
+Il va s'allumer, ou "booter", et afficher l'écran de sélection de l'utilisateur.
+On va sélectionner:
+\begin{itemize}
+    \item Utilisateur : \textbf{illumine}
+    \item Mot de passe : \textbf{illumine}
+\end{itemize}
+
+Après quelques secondes, le bureau du Raspberry Pi 5 va s'afficher.
+On va ouvrir le terminal (icône noire avec un \textgreater\_ blanc) pour pouvoir taper des commandes,
+comme montré sur la figure \ref{fig:rpi_desktop}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./Figures/démarrage.png}
+    \caption{Bureau du Raspberry Pi 5}
+    \label{fig:rpi_desktop}
+\end{figure}
+
+\subsubsection{Commandes python}
+
+On va se placer dans un environnement python interactif en tapant les commandes suivantes dans le terminal:
+\color{blue}\begin{verbatim}
+    cd rpi5_projects/git_repos/illumine/python/2eme_seance/
+    source_illumine_env
+    ipython
+\end{verbatim}
+\color{black}
+
+On est maintenant dans un environnement Python interactif qui ressemble à celui sur la figure \ref{fig:ipython}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./Figures/ipython.png}
+    \caption{Environnement Python interactif}
+    \label{fig:ipython}
+\end{figure}
+
+On peut donc taper des commandes python pour contôler le ruban LED:
+\color{blue}\begin{verbatim}
+    import RPi5_Neopixel as np 
+    ruban = np.Neopixel_Tape()
+    ruban.on_all_led('orchid')
+\end{verbatim}
+\color{black}
+
+On remarque qu'il faut donner un nom de couleur en anglais, alors voici la liste des couleurs disponibles:
+
+\color{blue}
+\begin{multicols}{3}
+\begin{verbatim}
+    'red'
+    'dark_red'
+    'red_orange'
+    'crimson'
+    'rust'
+    'blood_red'
+    'tomato'
+    'reddish_orange'
+    'burnt_orange'
+    'pumpkin'
+    'orange'
+    'dark_orange'
+    'golden_orange'
+    'yellow_orange'
+    'yellow'
+    'bright_yellow'
+    'lemon_yellow'
+    'pale_yellow'
+    'lime_yellow'
+    'chartreuse'
+    'spring_green'
+    'light_green'
+    'green'
+    'dark_green'
+    'forest_green'
+    'teal_green'
+    'teal'
+    'bright_turquoise'
+    'medium_turquoise'
+    'dark_turquoise'
+    'cyan'
+    'light_cyan'
+    'aqua'
+    'light_sky_blue'
+    'cornflower_blue'
+    'steel_blue'
+    'dodger_blue'
+    'light_blue'
+    'powder_blue'
+    'cadet_blue'
+    'lavender_blue'
+    'light_indigo'
+    'indigo'
+    'blue_violet'
+    'purple'
+    'medium_purple'
+    'orchid'
+    'violet'
+    'thistle_purple'
+    'pink_purple'
+    'magenta'
+    'fuchsia'
+    'hot_pink'
+    'light_pink'
+    'pink'
+    'light_coral'
+    'salmon_pink'
+    'coral'
+    'tomato_pink'
+    'rosy_brown'
+\end{verbatim}
+\end{multicols}
+\color{black}
+
+N'oublie pas les guillements autour du nom de la couleur !
+
+\subsubsection{Fonctions élémentaires}
+
+Plusieurs fonctions élémentaires sont disponibles pour piloter une ou plusieurs LED du ruban. \par
+
+\textit{Exercice:} Essaye les fonctions suivantes en remplaçant \textbf{num} par un numéro de LED entre 0 et 59,
+\textbf{color\_name} par un nom de couleur de la liste précédente, et \textbf{times} par le nombre de fois
+que tu veux faire l'effet.
+Décris sur les pointillés ce que fait chaque fonction.
+
+\color{blue}\begin{verbatim}
+    ruban.on_led(num, color_name): ............................................... 
+
+    ruban.off_led(num): ..........................................................
+
+    ruban.on_all_led(color_name): ................................................
+
+    ruban.off_all_led(): .........................................................
+
+    ruban.avance(num, color_name, times): ........................................
+
+    ruban.recule(num, color_name, times): ........................................
+
+    ruban.clignote(num, color_name, times): ......................................
+
+    ruban.clignote_all(color_name, times): .......................................
+
+    ruban.random(color_name, times): ............................................
+
+    ruban.fill_rainbow(): ........................................................
+\end{verbatim}
+\color{black}
+
+\subsubsection{Script python}
+
+Nous allons maintenant écrire des fonctions plus complexes, mais pour cela nous devons rapidement expliquer
+ce que fait une boucle \textit{while}.
+Une boucle \textit{while} permet de répéter une série d'instructions tant qu'une condition est vraie.
+Une analogie peut être "tant que je ne suis pas arrivée au bout du chemin, je continue d'avancer".
+Voici un exemple de boucle \textit{while} en python (à ne pas taper, c'est juste un exemple):
+\color{blue}
+\begin{verbatim}
+    compteur = 0
+    while compteur < 5:
+        compteur = compteur + 1
+\end{verbatim}
+\color{black}
+
+On va maintenant quitter l'environnement python interactif en tapant la commande \color{blue}
+\texttt{exit()} \color{black}.
+
+\textit{Exercice:} Tape la commande suivante pour ouvrir et compléter le script python \texttt{charge.py}:
+\color{blue}
+\begin{verbatim}
+    gedit charge.py
+\end{verbatim}
+\color{black}
+
+Une fenêtre comme celle de la figure \ref{fig:charge} va s'ouvrir. La description de la fonction est donnée, 
+et c'est à toi de compléter le script en utilisant les fonctions élémentaires vues précédemment, ainsi qu'une
+ou plusieurs boucles \textit{while} si nécessaire (et/ou \textit{for}).
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./Figures/fonction_à_compléter.png}
+    \caption{Fonction \texttt{charge.py} à compléter}
+    \label{fig:charge}
+\end{figure}
+
+Une fois terminé, sauvegarde le fichier (Ctrl+S), et tu peux soit fermer la fenêtre et revenir au terminal, soit
+garder la fenêtre ouverte, ouvrir un autre terminal et retaper:
+\color{blue} 
+\begin{verbatim} 
+    cd rpi5_projects/git_repos/illumine_ton_ingeniosite/2nd_seance/
+    source_illumine_env
+\end{verbatim}
+\color{black} 
+
+Dans les deux cas, tape:
+\color{blue}
+\begin{verbatim}
+    python3 charge.py
+\end{verbatim}
+\color{black}
+pour exécuter ton script python et voir si le résultat est celui attendu !
+
+Refait cela en remplaçant la fonction \texttt{charge.py} par les fonctions \texttt{chariot.py}
+et \texttt{croise.py}.
+
+\subsubsection{Eteindre le RPi 5}
+
+On peut éteindre le RPi 5 comme un ordinateur classique, mais on peut aussi l'éteindre avec
+une commande dans le terminal:
+
+\color{blue}\begin{verbatim}
+    sudo shutdown -h now
+\end{verbatim}
+
+\color{black}
+
+Il faut taper le mot de passe: rien ne s'affiche quand tu tapes mais c'est normal !
+Tape le bon mot de passe et le RPi 5 va s'éteindre.
+
+Bravo !
+
+
+

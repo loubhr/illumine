@@ -1,0 +1,241 @@
+\section{\textit{Première Séance}}
+
+\subsection{Le Raspberry Pi 5}
+Au cours de nos trois séances, nous allons utiliser un nano-ordinateur (un ordinateur miniature “simplifié”) appelé \textbf{Raspberry Pi 5} (RPi 5), 
+qui nous permettra de contrôler une LED simple, ou plusieurs LEDs sur un ruban. Il est d’abord vendu seul, sous forme d’une carte unique 
+de la taille d’une carte de crédit, appelée carte mère, mais en fonction du projet à réaliser, il est possible d’ajouter des cartes et des 
+composants électroniques complémentaires comme une caméra si on veut filmer, 
+des roues pour faire une voiture télécommandée, ou comme dans notre cas un ruban LED !
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{./Figures/RPi5_description.png}
+    \caption{Le Raspberry Pi 5}
+    \label{fig:raspberry_pi_5}
+\end{figure}
+
+En général, ces composants supplémentaires se connectent sur les pins (broches) \textbf{GPIO = General Purpose Input/Output}. 
+C’est sur ces pins que l’on va connecter nos LEDs; elles permettent au RPi 5 
+de communiquer aux LEDs les commandes que nous allons envoyer.
+
+\subsection{Montage électronique}
+
+Pour certains montages électroniques, souvent lorsque l’on est au début d’un projet et que l’on fait ce qu’on appelle du “prototypage”,
+on a besoin d’une carte intermédiaire pour connecter les différents composants électroniques, appelée carte à trous. \par
+Une carte à trous est une plaque en plastique avec plein de petits trous dans lesquels on peut insérer des fils et des composants électroniques 
+(sans avoir besoin de souder). À l’intérieur de la carte à trous, les trous sont connectés entre eux par des bandes métalliques, ce qui permet de
+faire des connexions électriques facilement. \par
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.81\textwidth]{./Figures/breadboard.png}
+    \caption{Présentation d'une breadboard (carte à trous)}
+    \label{fig:breadboard}
+\end{figure}
+
+On va connecter la LED à la pin GPIO numéro 16 en suivant le schéma de montage de la figure \ref{fig:led_circuit}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{./Figures/LED_circuit.png}
+    \caption{Montage électronique}
+    \label{fig:led_circuit}
+\end{figure}
+
+On remarque qu’en plus de la LED (en rouge), il y a une résistance (en beige).
+La résistance sert à limiter le courant électrique qui traverse la LED, pour éviter de l’endommager.
+
+\subsection{Analogie électrique}
+
+\subsubsection{Le courant électrique}
+
+Imagine un tuyau rempli d’eau. Chaque goutte d’eau représente un électron. Quand tu ouvres le robinet, les gouttes se déplacent 
+d’un bout à l’autre du tuyau.
+Dans un circuit électrique, c’est pareil : les électrons (les gouttes d’eau) arrivent par la source d’alimentation et doivent ressortir en 
+rejoignant la terre (ou la masse). Augmenter le courant, C’est comme augmenter le débit d’eau dans le tuyau : plus il y a de gouttes (d’électrons) qui circulent par seconde, 
+plus le courant est fort.
+
+\subsubsection{La tension électrique}
+
+La tension électrique est comme la pression de l’eau dans le tuyau. Plus la pression est élevée, plus l’eau (ou les électrons)
+est poussée avec force à travers le tuyau (ou le circuit). \par
+Augmenter la tension, C’est comme monter le tuyau plus haut, au 5ème étage d'un immeuble par exemple : l’eau (les électrons) 
+aura plus d’énergie pour circuler, même si le tuyau est un peu plus étroit ou plus long.
+
+\subsection{Programmation Python}
+
+\subsubsection{Démarrage}
+
+Une fois le montage électronique réalisé, on peut brancher le clavier, la souris, et le câble micro-hdmi au Raspberry Pi.
+Puis, on peut brancher le câble d'alimentation pour allumer le Raspberry Pi 5.
+
+Il va s'allumer, ou "booter", et afficher l'écran de sélection de l'utilisateur.
+On va sélectionner:
+\begin{itemize}
+    \item Utilisateur : \textbf{illumine}
+    \item Mot de passe : \textbf{illumine}
+\end{itemize}
+
+Après quelques secondes, le bureau du Raspberry Pi 5 va s'afficher.
+On va ouvrir le terminal (icône noire avec un \textgreater\_ blanc) pour pouvoir taper des commandes.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./Figures/démarrage.png}
+    \caption{Bureau du Raspberry Pi 5}
+    \label{fig:rpi_desktop}
+\end{figure}
+
+\subsubsection{Commandes python}
+
+Pour contrôler la LED, on va utiliser le langage de programmation \textbf{Python}.
+Pour comprendre ce qu'est un langage de programmation, on peut faire une analogie 
+avec le jeu "Jacques a dit". Dans ce jeu, un joueur donne des instructions aux autres
+joueurs, "debout", "saute", "tourne-toi", etc. Les autres joueurs doivent suivre ces instructions.
+De la même manière, on va donner des instructions à l'ordinateur, sauf qu'il ne parle pas la même langue
+que nous, c'est pour ça qu'on utilise un langage de programmation comme Python. \par
+
+Les premières commandes qu'on va lui donner sont, en français :
+\begin{itemize}
+    \item "Place toi dans un environnement spécifique"
+    \item "Rassemble tes outils"
+    \item "Connecte toi à la LED"
+    \item "Allume la LED"
+    \item "Eteins la LED"
+\end{itemize}
+
+En Python, ça donne:
+\color{blue}\begin{verbatim}
+    cd rpi5_projects/git_repos/illumine/python/1ere_seance/
+    source_illumine_env
+    ipython
+\end{verbatim}
+
+\color{black}
+ 
+Après ces deux premières commandes, on est dans un environnement Python interactif qui ressemble à ça:
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./Figures/ipython.png}
+    \caption{Environnement Python interactif}
+    \label{fig:ipython}
+\end{figure}
+
+On peut maintenant taper les commandes suivantes pour contrôler la LED:
+\color{blue}\begin{verbatim}
+    from gpiozero import LED
+    rouge = LED(16)
+    rouge.on()
+    rouge.off()
+\end{verbatim}
+
+\color{black}
+
+Lance ces commandes une par une dans le terminal en appuyant sur la touche "Entrée" et observe ce qu'il se passe !
+
+\subsubsection{Script python}
+
+On a réussi à allumer et éteindre la LED en tapant les commandes une par une, mais ce n'est pas très pratique.
+Si on doit faire ça 10, ou 100 fois, ça va vite devenir lassant. On peut donc automatiser ça en écrivant un script Python,
+c'est-à-dire un fichier texte qui contient toutes les commandes à exécuter, et qui est donné en entier à l'ordinateur.
+C'est comme une recette de cuisine ! Toutes les étapes sont listées dans l'ordre et l'ordinateur les suit, comme si c'était toi qui
+faisait un gâteau. \par
+
+On va d'abord sortir de l'environnement python interactif en faisant \color{blue}\texttt{exit}\color{black}
+
+Toujours dans le terminal, on va ouvrir un éditeur de texte et créer un fichier avec la commande:
+\color{blue}\begin{verbatim}
+    gedit led_control.py
+\end{verbatim}
+
+\color{black}
+
+Une fenêtre va s'ouvrir (patience, ça prend parfois du temps!), c'est l'éditeur de texte. On va écrire les commandes suivantes dans cette fenêtre:
+\color{blue}\begin{verbatim}
+    from gpiozero import LED
+    from time import sleep
+\end{verbatim}
+\color{black}
+
+Le reste à toi de deviner ! Le but est que la LED s'allume au moins 5 fois. On va utiliser ce qu'on a fait avant, ainsi que
+3 commandes données ici dans le désordre:
+\color{blue}\begin{verbatim}
+    sleep(1)
+    print("LED ON")
+    print("LED OFF")
+\end{verbatim}
+\color{black}
+
+Une fois le script terminé, on l'enregistre et on le ferme. Pour le donner à l'ordinateur, c'est-à-dire "l'exécuter", on tape dans le terminal:
+\color{blue}\begin{verbatim}
+    python3 led_control.py
+\end{verbatim}
+
+\color{black}
+
+Essaye d'exécuter ton script plusieurs fois !
+
+\subsubsection{Script avec boucle}
+
+On a vu que le script permet de donner toutes les commandes d'un coup à l'ordinateur, mais on a quand 
+même dû écrire toutes les commandes pour allumer et éteindre la LED 5 fois. Si on voulait le faire 100 fois, 
+ça ferait beaucoup de lignes à écrire ! Heureusement, en programmation, il existe des structures qui permettent de répéter des actions sans avoir à les écrire plusieurs fois,
+ça s'appelle des \textbf{boucles}. \par
+
+On va modifier le script précédent pour utiliser une boucle \textbf{for} qui va répéter l'allumage et l'extinction de la LED 5 fois. 
+La structure à utiliser est la suivante:
+\color{blue}\begin{verbatim}
+    n = #nombre de répétitions
+    for i in range(n):
+        # instructions à répéter
+\end{verbatim}
+\color{black}
+
+Essaye de modifier ton script en utilisant cette structure pour allumer et éteindre la LED autant de fois que tu veux !
+
+Une fois le script modifié, enregistre-le et exécute-le à nouveau avec la commande:
+\color{blue}\begin{verbatim}
+    python3 led_control.py
+\end{verbatim}
+
+\color{black}
+
+Amuse-toi à changer le nombre de répétitions et la durée d'allumage/extinction de la LED pour voir ce que ça donne !
+
+\subsubsection{Montage et contrôle de deux LEDs}
+
+Si tu es arrivée jusque là et que tu as envie d'aller plus loin, tu peux refaire
+le même montage avec une deuxième LED. Comme tu t'en doutes, on va connecter la deuxième LED
+à deux autres pins, les pins 37 et 39 (voir Figure \ref{fig:GPIO}), qui correspondent à la GPIO 26 et à une autre masse (Ground).
+Attention aussi à la façon dont tu connectes tes fils à la breadboard !
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.9\textwidth]{./Figures/GPIO.png}
+    \caption{Liste des GPIOs}
+    \label{fig:GPIO}
+\end{figure}
+
+Fais vérifier ton montage par un encadrant avant de passer à la suite.
+
+Ensuite, il va falloir modifier ton script Python pour contrôler les deux LEDs. Aide toi de ce que tu as fait avant.
+Tu sais maintenant que la pin n'est plus la numéro 16 mais la 26, tu dois donc changer
+le numéro quand tu te connectes à la LED. Attention aussi au nom que tu lui donnes,
+si tu nommes les deux avec le même nom, l'ordinateur ne saura pas de qui tu parles !
+
+\subsubsection{Eteindre le RPi 5}
+
+On peut éteindre le RPi 5 comme un ordinateur classique, mais on peut aussi l'éteindre avec
+une commande dans le terminal:
+
+\color{blue}\begin{verbatim}
+    sudo shutdown -h now
+\end{verbatim}
+
+\color{black}
+
+Il faut taper le mot de passe: rien ne s'affiche quand tu tapes mais c'est normal !
+Tape le bon mot de passe et le RPi 5 va s'éteindre.
+
+Bravo !
