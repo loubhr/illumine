@@ -18,21 +18,46 @@ comprendre les spécificités du matériel.
     \item \textbf{TXB0104 Bi-Direction Level Shifter} \url{https://mou.sr/4heobXq} 
     \item \textbf{HDMI vers micro HDMI} 1 m \url{https://fr.rs-online.com/web/p/cables-raspberry-pi/2012171} 
     \item \textbf{Platine d'essai} \url{https://fr.rs-online.com/web/p/platines-d-essais/2153175}
-    \item \textbf{Strap pour platine d'essai mâle-mâle} \url{https://fr.rs-online.com/web/p/straps-pour-platines-d-essai/2048241}
-    \item \textbf{Strap pour platine d'essai mâle-femelle} \url{https://fr.rs-online.com/web/p/straps-pour-platines-d-essai/2048243}
+    \item \textbf{Strap pour platine d'essai mâle-mâle} 
+    \begin{sloppypar}
+    \url{https://fr.rs-online.com/web/p/straps-pour-platines-d-essai/2048241}
+    \end{sloppypar}
+    \item \textbf{Strap pour platine d'essai mâle-femelle} 
+    \begin{sloppypar}
+    \url{https://fr.rs-online.com/web/p/straps-pour-platines-d-essai/2048243}
+    \end{sloppypar}
 \end{itemize}
 
 Si vous souhaitez réaliser la première séance avec une LED unique, il en faudra également une,
 ainsi qu'une résistance. \par
+
+\vspace{1em}
+
 \textit{\textbf{Note:}} Si vous utilisé le convertisseur de niveau (Level-Shifter) proposé ici, il faudra souder
 les broches fournies avec vous même. 
 
 \subsection{Configuration du Raspberry Pi}
 
 Dans un premier temps, il faut installer Raspberry Pi OS sur la carte mémoire et configurer le Raspberry Pi 5. Pour simplifier cette étape,
-vous trouverez dans ce Proton Drive une image de la carte mémoire déjà configurée.
+vous trouverez dans ce Proton Drive une image de la carte mémoire déjà configurée. 
 
-\textit{\textbf{Lien vers l'image de la carte mémoire:}} \url{https://drive.proton.me/urls/3HZFCYNRZ4#hk5mEik54Qc6}
+\vspace{1em}
+
+\textit{\textbf{Lien vers l'image de la carte SD du RPi5:}} 
+\begin{sloppypar}
+\url{https://drive.proton.me/urls/3HZFCYNRZ4#hk5mEik54Qc6}
+\end{sloppypar}
+
+\vspace{1em}
+
+Pour décompresser l'image, utilisez la commande:
+\color{blue} \texttt{tar -xvzf rpi5-illumine.tar.gz} \color{black}
+Puis voici une référence pour vous aider à la copier sur votre carte SD: 
+\begin{sloppypar}
+\url{https://raspberrytips.fr/cloner-carte-sd-raspberry-pi/}
+\end{sloppypar}
+
+\vspace{1em}
 
 L'environnement virtuel  python \color{blue} \texttt{illumine\_env} \color{black} est déjà créé et contient toutes les librairies nécessaires, mais voici 
 la liste de celles assez spécifiques si vous souhaitez le refaire vous même:
@@ -45,6 +70,8 @@ la liste de celles assez spécifiques si vous souhaitez le refaire vous même:
 \end{itemize} \color{black}
 En plus, vous aurez besoin de librairies plus classiques comme \color{blue}\texttt{numpy}, \texttt{time} \color{black}, etc.
 
+\vspace{1em}
+
 \textit{\textbf{Note:}} Si vous modifiez les chemins des dossiers, n'oubliez pas de modifier le TP en conséquence (commande \color{blue} \texttt{cd} \color{black}).
 
 \subsection{Références et ressources}
@@ -52,15 +79,36 @@ En plus, vous aurez besoin de librairies plus classiques comme \color{blue}\text
 
 Toutes les explications claires et détaillées sont disponibles sur le merveilleux site d'Adafruit.
 \begin{itemize}
-    \item Une présentation des rubans LED NeoPixel: \url{https://learn.adafruit.com/neopixels-on-raspberry-pi}
-    \item Comment réaliser le montage électronique: \url{https://learn.adafruit.com/neopixels-on-raspberry-pi/raspberry-pi-wiring} 
-    \item Les librairies python à installer et un exemple de code: \url{https://learn.adafruit.com/neopixels-on-raspberry-pi/python-usage}
-    \item Les modifications nécessaires pour le Raspberry Pi 5: \url{https://learn.adafruit.com/circuitpython-on-raspberrypi-linux/using-neopixels-on-the-pi-5}
-    \item Présentation du Level Shifter TXB0104: \url{https://www.adafruit.com/product/1875}
+    \item Une présentation des rubans LED NeoPixel: 
+    \begin{sloppypar}
+    \url{https://learn.adafruit.com/neopixels-on-raspberry-pi}
+    \end{sloppypar}
+    \item Comment réaliser le montage électronique: 
+    \begin{sloppypar}
+    \url{https://learn.adafruit.com/neopixels-on-raspberry-pi/raspberry-pi-wiring}
+    \end{sloppypar}
+    \item Les librairies python à installer et un exemple de code: 
+    \begin{sloppypar}
+    \url{https://learn.adafruit.com/neopixels-on-raspberry-pi/python-usage}
+    \end{sloppypar}
+    \item Les modifications nécessaires pour le Raspberry Pi 5: 
+    \begin{sloppypar}
+    \url{https://learn.adafruit.com/circuitpython-on-raspberrypi-linux/using-neopixels-on-the-pi-5}
+    \end{sloppypar}
+    \item Présentation du Level Shifter TXB0104: 
+    \begin{sloppypar}
+    \url{https://www.adafruit.com/product/1875}
+    \end{sloppypar}
 \end{itemize}
 
 Si vous souhaitez réaliser le première séance avec une LED unique, voici des ressources utiles:
 \begin{itemize}
-    \item Le circuit électronique simple \url{https://raspberry-pi.fr/led-raspberry-pi/}
-    \item La librairie gpiozero \url{https://raspberrypi.stackexchange.com/questions/148686/raspberry-pi-5-gpiozero}
+    \item Le circuit électronique simple 
+    \begin{sloppypar}
+    \url{https://raspberry-pi.fr/led-raspberry-pi/}
+    \end{sloppypar}
+    \item La librairie gpiozero 
+    \begin{sloppypar}
+    \url{https://raspberrypi.stackexchange.com/questions/148686/raspberry-pi-5-gpiozero}
+    \end{sloppypar}
 \end{itemize}
