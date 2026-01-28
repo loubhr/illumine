@@ -23,7 +23,11 @@ Toutes les informations qui vont suivre se trouvent aussi dans l'annexe à desti
 
 ## Configuration du Raspberry Pi 5
 
-**Lien vers l'image de la carte mémoire :** [https://drive.proton.me/urls/3HZFCYNRZ4#hk5mEik54Qc6](https://drive.proton.me/urls/3HZFCYNRZ4#hk5mEik54Qc6)
+**Lien vers l'image de la carte SD du RPi 5 :** [https://drive.proton.me/urls/3HZFCYNRZ4#hk5mEik54Qc6](https://drive.proton.me/urls/3HZFCYNRZ4#hk5mEik54Qc6)
+
+Pour décompresser l'image, utilisez la commande:
+`tar -xvzf rpi5-illumine.tar.gz`
+Puis voici une référence pour vous aider à la copier sur votre carte SD: [Cloner une carte SD](https://raspberrytips.fr/cloner-carte-sd-raspberry-pi/)
 
 L'environnement virtuel Python `illumine_env` est déjà créé et contient toutes les librairies nécessaires. Voici la liste des librairies spécifiques à installer si vous souhaitez recréer l'environnement :
 
