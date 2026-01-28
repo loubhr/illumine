@@ -32,7 +32,7 @@ Puis voici une référence pour vous aider à la copier sur votre carte SD: [Clo
 L'environnement virtuel Python `illumine_env` est déjà créé et contient toutes les librairies nécessaires. Voici la liste des librairies spécifiques à installer si vous souhaitez recréer l'environnement :
 
 - `gpiozero`
-- `Adafruit-Blinka-Raspberry-Pi5-Neopixel`
+- `Adafruit-Blinka-Raspberry-Pi5-Neopixel` [Repository Adafruit Blinka](https://github.com/adafruit/Adafruit_Blinka_Raspberry_Pi5_Neopixel)
 - `adafruit-circuitpython-pixelbuf`
 - `adafruit-circuitpython-led-animation`
 - `ipython`
@@ -54,7 +54,7 @@ Si vous souhaitez réaliser la première séance avec une LED unique, voici des 
 - [Circuit électronique simple](https://raspberry-pi.fr/led-raspberry-pi/)
 - [Librairie gpiozero](https://raspberrypi.stackexchange.com/questions/148686/raspberry-pi-5-gpiozero)
 
- ### Remerciements
+ ## Remerciements
 
  Merci à **Airbus** pour les financements qui ont permis d'acheter le matériel nécessaire.
  Merci à l'**ISAE-SUPAERO** et aux équipes de **OSE** pour leur accompagnement.
